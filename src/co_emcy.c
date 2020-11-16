@@ -339,6 +339,13 @@ void co_emcy_handle_can_state (co_net_t * net)
    {
       /* Entered bus off */
       co_emcy_error_register_set (net, CO_ERR_COMMUNICATION);
+
+      /* Call user callback directly, cannot call co_emcy_tx() now */
+      if (net->cb_emcy)
+      {
+         net->cb_emcy (net->cb_arg, net->node, 0x8140,
+                       co_emcy_error_register_get(net), NULL);
+      }
    }
 
    if (!net->emcy.state.bus_off && previous.bus_off)
