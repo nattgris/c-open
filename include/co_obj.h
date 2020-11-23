@@ -108,7 +108,7 @@ uint32_t co_od1001_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for Pre-defined error field object (1003h)
@@ -128,7 +128,7 @@ uint32_t co_od1003_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for COB-ID SYNC message object (1005h)
@@ -148,7 +148,7 @@ uint32_t co_od1005_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for Commmunication cycle object (1006h)
@@ -168,7 +168,7 @@ uint32_t co_od1006_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for Synchronous window length object (1007h)
@@ -188,7 +188,7 @@ uint32_t co_od1007_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for Guard time object (100Ch)
@@ -208,7 +208,7 @@ uint32_t co_od100C_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for Life time factor object (100Dh)
@@ -228,7 +228,7 @@ uint32_t co_od100D_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for Store Parameters object (1010h)
@@ -248,7 +248,7 @@ uint32_t co_od1010_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for Restore Default Parameters object (1011h)
@@ -268,7 +268,7 @@ uint32_t co_od1011_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for COB-ID EMCY object (1014h)
@@ -288,7 +288,7 @@ uint32_t co_od1014_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for Inhibit time EMCY object (1015h)
@@ -308,7 +308,7 @@ uint32_t co_od1015_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for Consumer heartbeat time object (1016h)
@@ -328,7 +328,7 @@ uint32_t co_od1016_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for Producer heartbeat time object (1017h)
@@ -348,7 +348,7 @@ uint32_t co_od1017_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for Synchronous counter overflow value object (1019h)
@@ -368,7 +368,7 @@ uint32_t co_od1019_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for Verify Configuration object (1020h)
@@ -388,7 +388,7 @@ uint32_t co_od1020_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for Emergency consumer object (1028h)
@@ -408,7 +408,7 @@ uint32_t co_od1028_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for Error behavior object (1029h)
@@ -428,7 +428,7 @@ uint32_t co_od1029_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for RPDO communication parameter object (1400h - 15FFh)
@@ -448,7 +448,7 @@ uint32_t co_od1400_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for RPDO mapping parameter object (1600h - 17FFh)
@@ -468,7 +468,7 @@ uint32_t co_od1600_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for TPDO communication parameter object (1800h - 19FFh)
@@ -488,7 +488,7 @@ uint32_t co_od1800_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 /**
  * Access function for RPDO mapping parameter object (1A00h - 1BFFh)
@@ -508,7 +508,7 @@ uint32_t co_od1A00_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value);
+   uint64_t * value);
 
 #ifdef __cplusplus
 }

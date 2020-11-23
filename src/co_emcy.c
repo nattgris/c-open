@@ -23,6 +23,7 @@
 #include "co_nmt.h"
 #include "co_sdo.h"
 #include "co_util.h"
+#include "co_obj.h"
 
 #include <string.h>
 
@@ -66,7 +67,7 @@ uint32_t co_od1001_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value)
+   uint64_t * value)
 {
    if (event == OD_EVENT_READ)
       *value = co_emcy_error_register_get (net);
@@ -79,14 +80,20 @@ uint32_t co_od1003_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value)
+   uint64_t * value)
 {
+   uint32_t retval;
+   uint32_t v;
    switch (event)
    {
    case OD_EVENT_READ:
-      return co_emcy_error_get (net, subindex, value);
+      retval = co_emcy_error_get (net, subindex, &v);
+      if (retval == 0)
+         *value = v;
+      return retval;
    case OD_EVENT_WRITE:
-      return co_emcy_error_set (net, subindex, value);
+      v = *value;
+      return co_emcy_error_set (net, subindex, &v);
    case OD_EVENT_RESTORE:
       net->number_of_errors = 0;
       return 0;
@@ -101,7 +108,7 @@ uint32_t co_od1014_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value)
+   uint64_t * value)
 {
    switch (event)
    {
@@ -127,7 +134,7 @@ uint32_t co_od1015_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value)
+   uint64_t * value)
 {
    switch (event)
    {
@@ -151,7 +158,7 @@ uint32_t co_od1028_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value)
+   uint64_t * value)
 {
    uint32_t cobid;
 
@@ -186,7 +193,7 @@ uint32_t co_od1029_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value)
+   uint64_t * value)
 {
    switch (event)
    {

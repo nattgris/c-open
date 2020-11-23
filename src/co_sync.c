@@ -20,6 +20,7 @@
 #include "co_sync.h"
 #include "co_sdo.h"
 #include "co_util.h"
+#include "co_obj.h"
 
 uint32_t co_od1005_fn (
    co_net_t * net,
@@ -27,7 +28,7 @@ uint32_t co_od1005_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value)
+   uint64_t * value)
 {
    co_sync_t * sync = &net->sync;
 
@@ -66,7 +67,7 @@ uint32_t co_od1006_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value)
+   uint64_t * value)
 {
    co_sync_t * sync = &net->sync;
 
@@ -97,7 +98,7 @@ uint32_t co_od1019_fn (
    const co_obj_t * obj,
    const co_entry_t * entry,
    uint8_t subindex,
-   uint32_t * value)
+   uint64_t * value)
 {
    co_sync_t * sync = &net->sync;
 
