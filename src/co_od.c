@@ -83,6 +83,11 @@ const co_entry_t * co_entry_find (
 
 const co_obj_t * co_obj_find (co_net_t * net, uint16_t index)
 {
+   return net->co_obj_find (net, index);
+}
+
+static const co_obj_t * co_obj_find_default (co_net_t * net, uint16_t index)
+{
    const co_obj_t * obj = net->od;
 
    /* Walk table until it ends or index is found */
@@ -97,6 +102,71 @@ const co_obj_t * co_obj_find (co_net_t * net, uint16_t index)
 
    /* Object was not found */
    return NULL;
+}
+
+static int co_obj_check_sorted (const co_obj_t * obj)
+{
+   uint16_t index = 0;
+   int count = 0;
+
+   /* Walk table until out-of-order element is found */
+   for (; obj->index != 0; obj++)
+   {
+      if (index > obj->index) {
+         return -1;
+      }
+      index = obj->index;
+      count++;
+   }
+
+   /* It's sorted, return the number of entries since it will be needed. */
+   return count;
+}
+
+static const co_obj_t * co_obj_find_sorted (co_net_t * net, uint16_t index)
+{
+   const co_obj_t * obj = net->od;
+   int count = net->co_obj_find_data;
+
+   size_t low = 0;
+   size_t high = count;
+
+   /* Binary search for the index */
+   while (low < high)
+   {
+      size_t mid = low + (high - low) / 2;
+
+      if (obj[mid].index == index)
+      {
+         return &obj[mid];
+      }
+      else if (obj[mid].index < index)
+      {
+         low = mid + 1;
+      }
+      else
+      {
+         high = mid;
+      }
+   }
+
+   /* Object was not found */
+   return NULL;
+}
+
+void co_obj_find_init (co_net_t * net)
+{
+   int count = co_obj_check_sorted (net->od);
+
+   if (count > 0)
+   {
+      net->co_obj_find = co_obj_find_sorted;
+      net->co_obj_find_data = count;
+      return;
+   }
+
+   /* Fall back to the linear search. */
+   net->co_obj_find = co_obj_find_default;
 }
 
 uint32_t co_od_get_ptr (

@@ -52,6 +52,7 @@ class TestBase : public ::testing::Test
       net.write     = store_write;
       net.close     = store_close;
 
+      co_obj_find_init (&net);
       co_pdo_init (&net);
       co_nmt_init (&net);
       co_od_reset (&net, CO_STORE_COMM, 0x1000, 0x1FFF);

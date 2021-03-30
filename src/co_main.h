@@ -257,6 +257,9 @@ struct co_net
    void * cb_arg;                            /**< Callback opaque argument */
    uint32_t mbox_overrun; /**< Mailbox overruns (for debugging) */
 
+   const co_obj_t * (*co_obj_find) (co_net_t * net, uint16_t index);
+   int co_obj_find_data;
+
    /** Reset callback */
    void (*cb_reset) (void * arg);
 

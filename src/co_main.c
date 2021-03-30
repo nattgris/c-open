@@ -29,6 +29,7 @@
 #include "co_api.h"
 
 #include "co_nmt.h"
+#include "co_od.h"
 #include "co_sdo.h"
 #include "co_pdo.h"
 #include "co_sync.h"
@@ -412,6 +413,8 @@ co_net_t * co_init (const char * canif, const co_cfg_t * cfg)
 
    net->job_periodic = CO_JOB_PERIODIC;
    net->job_rx       = CO_JOB_RX;
+
+   co_obj_find_init (net);
 
    if (co_pdo_init (net) != 0)
       goto error2;

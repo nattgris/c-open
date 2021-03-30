@@ -193,6 +193,16 @@ uint32_t co_od_store (co_net_t * net, co_store_t store, uint16_t min, uint16_t m
 const co_obj_t * co_obj_find (co_net_t * net, uint16_t index);
 
 /**
+ * Initialize the object lookup mechanism
+ *
+ * Builds any cache, hash table or other mechanism that may be used
+ * to speed up co_obj_find().
+ *
+ * @param net           network handle
+ */
+void co_obj_find_init (co_net_t * net);
+
+/**
  * Find entry in object
  *
  * This function finds the entry descriptor with the given subindex.
